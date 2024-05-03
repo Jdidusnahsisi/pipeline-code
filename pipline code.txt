@@ -1,0 +1,22 @@
+pipeline {
+    agent any  // Specifies that this pipeline can run on any available agent
+
+    stages {
+        stage('checkout') {  // Checkout stage to pull source code from a Git repository
+            steps {
+                git branch: 'main', url: 'https://github.com/Jdidusnahsisi/prctical.git'
+            }
+        }
+        stage('Build') {  // Build stage
+            steps {
+                echo 'Building...'  // Placeholder step indicating that the project is being built
+            }
+        }
+        stage('Deploy') {  // Deploy stage
+            steps {
+                echo 'Deploying...'  // Placeholder step indicating that the project is being deployed
+                bat "xcopy /Y /I /E /F /C *.html C:\\xammp\\htdocs\\"  // Executes a Windows batch command to copy HTML files to a deployment directory
+            }
+        }
+    }
+}
